@@ -1,0 +1,9 @@
+<H1>Global Data Science Challenge Evaluation page</H1><hr>
+<form action="/DSCIV/" method="get">
+<input type="text" name="businessquery" size="100"> <input type="submit" value="Search">
+</form><hr>
+{% if result %}
+	{% for res in result %}
+	<li>{{ res }}</li>
+	{% endfor %}
+{% endif %}
