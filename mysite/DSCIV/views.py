@@ -1,13 +1,17 @@
 from django.shortcuts import render_to_response, render
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from .forms import DataSciencesearch, Winnerselection
+from .backendlogic import BackendLogic
 
 # Create your views here.
 
 def search(request):
     if request.POST:
         validationform = DataSciencesearch(request.POST)
-        pdffilenames = ["BMW.pdf", "BAYER.pdf","GE.pdf",]
+        backendlogic = BackendLogic
+        #pdffilenames = backendlogic.executemodel("Testing the logic gautam", "1", "P")
+        pdffilenames = backendlogic.select2teams()
+        #pdffilenames = ["BMW.pdf", "BAYER.pdf","GE.pdf",]
         context = {'result' :  pdffilenames}
         return render(request, 'DSCIV/result.html', context)
     else:
