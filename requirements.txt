@@ -1,0 +1,6 @@
+django
+scikit-learn
+trueskill
+xlrd
+regex
+-r models/Steve-Nieve/requirements.txt

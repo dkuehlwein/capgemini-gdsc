@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!--<p align="left">-->
+<!--<button type="button" class="btn btn-primary" style="cursor: pointer;" onclick="location.href = '/evaluation/'">-->
+<!--Search Again-->
+<!--</button>-->
+<!--</p>-->
+
+<h2 align="center">
+    Search Query: "{{search_query}}"
+</h2>
+
+<div class="container-fluid" align="center">
+    <table class="table table-bordered table-responsive-sm" style="table-layout: fixed">
+        <caption>
+            <tr>
+                <th scope="col">Team A (Execution Time: {{run_time1}})</th>
+                <th scope="col">Team B (Execution Time: {{run_time2}})</th>
+            </tr>
+        </caption>
+        <tbody>
+        <tr>
+            {% if result1 %}
+            <td>
+                {% for res, summ in result1.items %}
+                <a href="/evaluation/download/{{res}}" name="filename" title="{{summ}}">{{ res }}</a></br>
+                <p>{{summ}}</p>
+                {% endfor %}
+            </td>
+            {% else %}
+            <td>
+                <div class="table" style="color: red">
+                    Problem in getting file names from model.
+                </div>
+            </td>
+            {% endif %}
+
+
+            {% if result2 %}
+            <td>
+                {% for res, summ in result2.items %}
+                <a href="/evaluation/download/{{res}}" name="filename">{{ res }}</a></br>
+                <p>{{summ}}</p>
+                {% endfor %}
+            </td>
+            {% else %}
+            <td>
+                <div class="table" style="color: red">Problem in getting file names from model.</div>
+            </td>
+            {% endif %}
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container-fluid">
+    <form action="/evaluation/result/" method="post">
+        {% csrf_token %}
+        <div>
+            <input type="hidden" name="team_name_1" value="{{team1}}">
+            <input type="hidden" name="team_name_2" value="{{team2}}">
+            <input type="hidden" name="search_query" value="{{search_query}}">
+            <input type="hidden" name="team_1_output" value="{{result_plain1}}">
+            <input type="hidden" name="team_2_output" value="{{result_plain2}}">
+        </div>
+        {% if user.is_authenticated %}
+        <div class="text-center">
+            {% if search_query %}
+            <div class="form-check form-check-inline">
+                <button type="submit" value="Awin:{{team1}}" name="Winner" class="btn btn-primary"> A Wins</button>
+            </div>
+            <div class="form-check form-check-inline">
+                <button type="submit" value="Bwin:{{team2}}" name="Winner" class="btn btn-primary"> B Wins</button>
+            </div>
+            <div class="form-check form-check-inline">
+                <button type="submit" value="Draw" name="Winner" class="btn btn-primary"> Draw</button>
+            </div>
+            {% else %}
+            <div class="form-check form-check-inline">
+                <button type="submit" value="Awin:{{team1}}" name="Winner" class="btn btn-primary" disabled="disabled">
+                    A Wins
+                </button>
+            </div>
+            <div class="form-check form-check-inline">
+                <button type="submit" value="Bwin:{{team2}}" name="Winner" class="btn btn-primary" disabled="disabled">
+                    B Wins
+                </button>
+            </div>
+            <div class="form-check form-check-inline">
+                <button type="submit" value="Draw" name="Winner" class="btn btn-primary" disabled="disabled"> Draw
+                </button>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+        <hr>
+        <div class="text-center">
+            <div class="form-check form-check-inline">
+                <button type="button" class="btn btn-primary" onclick="location.href = '/evaluation/'">Search Again
+                </button>
+            </div>
+        </div>
+        <hr>
+    </form>
+</div>
+{% endblock %}
