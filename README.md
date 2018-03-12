@@ -24,6 +24,7 @@ More details on GDSC challenge can be found on [this Yammer link](https://www.ya
 ## Testing out models
 1. In order to test your model, it is advisable to first validate it by _scripts/validate_model.py_ script. 
 2. Once it is validated, you can place your model in _models_ folder (See _models/Steve-Nieve_ for help)
+3. In order to check the sample Steve-Nieve model, first go through [this Readme](https://github.com/dkuehlwein/capgemini-gdsc/blob/master/models/Steve-Nieve/README.md) file to complete the prerequisites. 
 
 ## Features of website
 1. The evaluation server selects two models at random and search according to the provided search query. 
