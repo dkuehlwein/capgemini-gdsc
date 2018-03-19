@@ -60,6 +60,9 @@ class TeamsOutput(models.Model):
     result_id = models.IntegerField()
     model_a_output = models.CharField(max_length=500)
     model_b_output = models.CharField(max_length=500)
+    model_a_execution_time = models.DecimalField(decimal_places=2, max_digits=5)
+    model_b_execution_time = models.DecimalField(decimal_places=2, max_digits=5)
 
     def __str__(self):
-        return self.result_id, self.model_a_output, self.model_b_output
+        return self.result_id, self.model_a_output, self.model_b_output, \
+               self.model_a_execution_time, self.model_b_execution_time

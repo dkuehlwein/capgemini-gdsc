@@ -114,7 +114,8 @@ def get_summaries(arr_ppt_file_names, result_output_plain):
     return summary_text, result_output_plain
 
 
-def add_new_result(winner_team, query, team_a, team_b, current_logged_in_user_id, team_a_result, team_b_result):
+def add_new_result(winner_team, query, team_a, team_b, current_logged_in_user_id, team_a_result, team_b_result,
+                   team_a_time, team_b_time):
     """ Adds new result and updates scores.
 
     Gets previous scores of teamA and team_b to update with new scores based on
@@ -144,7 +145,8 @@ def add_new_result(winner_team, query, team_a, team_b, current_logged_in_user_id
     update_scores(team_a_score, team_b_score, winner_team, new_result.id)
 
     # Store outputs
-    team_output = TeamsOutput(result_id=new_result.id, model_a_output=team_a_result, model_b_output=team_b_result)
+    team_output = TeamsOutput(result_id=new_result.id, model_a_output=team_a_result, model_b_output=team_b_result,
+                              model_a_execution_time=team_a_time, model_b_execution_time=team_b_time)
     team_output.save()
 
 

@@ -77,11 +77,14 @@ def result(request):
         team_1_output = form_post_data['team_1_output']
         team_2_output = form_post_data['team_2_output']
 
+        team_1_time = form_post_data['team_1_time']
+        team_2_time = form_post_data['team_2_time']
+
         context = {'result': form_post_data, 'message': 'Winner record saved successfully!'}
 
         add_new_result(winner_team=winner_team, query=search_query, team_a=team_name_1, team_b=team_name_2,
                        current_logged_in_user_id=request.user.id, team_a_result=team_1_output,
-                       team_b_result=team_2_output)
+                       team_b_result=team_2_output, team_a_time=team_1_time, team_b_time=team_2_time)
 
         messages.success(request, 'Winner record saved successfully!')
         return render(request, 'evaluation/search.html', context)
