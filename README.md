@@ -33,11 +33,11 @@ More details on GDSC challenge can be found on [this Yammer link](https://www.ya
     * team B would be selected at random from a list of 'potential opponents'. 
         * Potential opponents are a list of teams which are selected based on their TrueSkill scores which lie between: 
             
-              `mu_min = team_a.mu - 3 * team_a.sigma` 
+              mu_min = team_a.mu - 3 * team_a.sigma 
              
              and 
              
-              `mu_min = team_a.mu + 3 * team_a.sigma`. 
+              mu_min = team_a.mu + 3 * team_a.sigma 
              
           (Read FAQs at [TrueSkill website](https://www.microsoft.com/en-us/research/project/trueskill-ranking-system/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fprojects%2Ftrueskill) to learn more about how it actually works.)
 3. Selected models can be viewed in server console against the type of model (python or R)  
