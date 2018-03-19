@@ -31,7 +31,7 @@ More details on GDSC challenge can be found on [this Yammer link](https://www.ya
 2. The teams are selected based on the selection count and a threshold defined by [TrueSkill](https://www.microsoft.com/en-us/research/project/trueskill-ranking-system/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fprojects%2Ftrueskill) scores. That is, 
     * team A would be the one which has been selected the least number of times.
     * team B would be selected at random from a list of 'potential opponents'. 
-        * Potential opponents are selected based on their TrueSkill scores which may lie between: 
+        * Potential opponents are a list of teams which are selected based on their TrueSkill scores which lie between: 
             
               `mu_min = team_a.mu - 3 * team_a.sigma` 
              
