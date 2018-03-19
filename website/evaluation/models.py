@@ -24,10 +24,11 @@ class Score(models.Model):
     team_id = models.CharField(max_length=100)
     mu = models.FloatField()
     sigma = models.FloatField()
+    nr_of_queries = models.IntegerField(default=0)
     result_id = models.IntegerField()
 
     def __str__(self):
-        return self.team_id, self.mu, self.sigma, self.result_id
+        return self.team_id, self.mu, self.sigma, self.nr_of_queries, self.result_id
 
 
 class ScoresBk(models.Model):

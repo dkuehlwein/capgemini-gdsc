@@ -4,6 +4,7 @@ Django views to handle requests from templates and transfer them to backendlogic
 import os
 import mimetypes
 import glob
+from time import time
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import DataSciencesearch, Winnerselection
@@ -27,7 +28,12 @@ def search(request):
         DataSciencesearch(request.POST)
 
         query = request.POST['businessquery']
+
+        before_time = time()
         team_name = select_two_teams()
+        after_time = time()
+        run_time = round(after_time - before_time, 2)
+        print('Teams selected in ' + str(run_time) + ' seconds.')
 
         # query execution of team 1
         program_name = get_program_name(selected_team_name=team_name[0])
